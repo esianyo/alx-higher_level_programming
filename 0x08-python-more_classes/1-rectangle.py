@@ -15,5 +15,5 @@ class Rectangle:
         if height < 0:
             raise ValueError("height must be >= 0")
 
-        self.height = height
-        self. Width = width
+        self.heighth = height
+        self.width = width
