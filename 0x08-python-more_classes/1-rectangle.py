@@ -3,6 +3,8 @@
 Rectangle class
 Esianyo Dzisenu
 """
+
+
 class Rectangle:
     """Defines the rectangle"""
     def __init__(self, width=0, height=0):
