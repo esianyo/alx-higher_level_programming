@@ -1,5 +1,3 @@
-add standard python documentation
-
 #!/usr/bin/python3
 """
 Rectangle class
