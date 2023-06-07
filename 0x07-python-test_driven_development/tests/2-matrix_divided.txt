@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+
+
+import unittest
+from matrix_division import matrix_divided
+
+class MatrixDivisionTestCase(unittest.TestCase):
+    def test_matrix_divided(self):
+        # Test cases
+        matrix = [[1, 2, 3], [4, 5, 6]]
+        div = 2
+        expected_result = [[0.5, 1.0, 1.5], [2.0, 2.5, 3.0]]
+        self.assertEqual(matrix_divided(matrix, div), expected_result)
+
+        matrix = [[1, 2, 3], [4, 5, 6]]
+        div = 0
+        with self.assertRaises(ZeroDivisionError):
+            matrix_divided(matrix, div)
+
+        matrix = [[1, 2, 3], [4, 5]]
+        div = 2
+        with self.assertRaises(TypeError):
+            matrix_divided(matrix, div)
+
+        matrix = [[1, 2, 3], [4, 5, "6"]]
+        div = 2
+        with self.assertRaises(TypeError):
+            matrix_divided(matrix, div)
+
+if __name__ == '__main__':
+    unittest.main()
