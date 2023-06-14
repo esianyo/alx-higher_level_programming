@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+Reads files.
+"""
+
 
 def read_file(filename=""):
     """
@@ -12,8 +16,9 @@ def read_file(filename=""):
 
     Raises:
         FileNotFoundError: If the specified file does not exist.
-
     """
-    with open(filename, encoding='utf-8') as file:
-        for line in file:
-            print(line, end='')
+
+
+    with open(filename, "r", encoding="utf-8") as f:
+        for line in f:
+            print(line, end="")
