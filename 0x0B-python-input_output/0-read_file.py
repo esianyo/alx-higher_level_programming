@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Reads files.
-"""
+"""Reads files."""
 
 
 def read_file(filename=""):
@@ -17,8 +15,6 @@ def read_file(filename=""):
     Raises:
         FileNotFoundError: If the specified file does not exist.
     """
-
-
     with open(filename, "r", encoding="utf-8") as f:
         for line in f:
             print(line, end="")
