@@ -1,3 +1,4 @@
+-- best rating genres
 SELECT tv_genres.name, SUM(rating) AS rating_sum
 FROM tv_genres
 LEFT JOIN tv_shows_genres ON tv_genres.id = tv_shows_genres.genre_id
