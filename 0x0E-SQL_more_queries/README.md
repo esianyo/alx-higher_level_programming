@@ -656,6 +656,3 @@ Repo:
 GitHub repository: alx-higher_level_programming
 Directory: 0x0E-SQL_more_queries
 File: 16-shows_by_genre.sql
-   
-Copyright © 2023 ALX, All rights reserved.
-Ask AI to edit or generate...
