@@ -1,7 +1,7 @@
 #!/usr/bin/node
-let sentence = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
-len = sentence.length;
+const sentence = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
+const len = sentence.length;
 let i = 0;
 for (; i < len; i++) {
-    console.log(sentence[i]);
+  console.log(sentence[i]);
 }
