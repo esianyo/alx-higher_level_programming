@@ -1,35 +1,24 @@
 #!/usr/bin/python3
-import sys
+"""scripts that lists all states"""
+
 from sys import argv
+import sys
 import MySQLdb
 
+if __name__ == "__main__":
 
-def get_states(username, password, db_name, search_value):
-    '''
-        ll values in the states table where name matches the argument
-    '''
-    db = MySQLdb.connect(host="localhost",
-                         user=username,
-                         passwd=password,
-                         db=db_name,
-                         port=3306)
+    u_name = sys.argv[1]
+    p = sys.argv[2]
+    db_name = sys.argv[3]
+    h = 'localhost'
 
+    db = MySQLdb.connect(host=h, port=3306, user=u_name, passwd=p, db=db_name)
     cursor = db.cursor()
-    bad_query = "SELECT * FROM states WHERE name=('{}')\
-                 ORDER BY id ASC".format(search_value)
-    cursor.execute(bad_query)
+    cursor.execute("SELECT * FROM `states` WHERE \
+                   name LIKE BINARY '{:s}' ORDER BY id ASC".format(argv[4]))
     rows = cursor.fetchall()
     for row in rows:
-        if (row[1] == search_value):
-            print(row)
-    cursor.close()
-    db.close()
+        print(row)
 
-
-if __name__ == "__main__":
-    credentials = sys.argv
-    username = sys.argv[1]
-    passwd = sys.argv[2]
-    db_name = sys.argv[3]
-    search_value = sys.argv[4]
-    get_states(username, passwd, db_name, search_value)
+    cursor.close
+    db.close
