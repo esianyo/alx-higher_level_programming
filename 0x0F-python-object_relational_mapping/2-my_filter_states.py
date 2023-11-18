@@ -1,26 +1,33 @@
 #!/usr/bin/python3
-"""a script to list in a filtered manner"""
-
-
 import sys
-from sys import argv
 import MySQLdb
 
 
-if __name__ == "__main__":
-    un = sys.argv[1]
-    pwd = sys.argv[2]
-    db_name = sys.argv[3]
-    hN = 'localhost'
+def get_states(username, password, db_name, search_value):
+    '''
+        ll values in the states table where name matches the argument
+    '''
+    db = MySQLdb.connect(host="localhost",
+                         user=username,
+                         passwd=password,
+                         db=db_name,
+                         port=3306)
 
-    db = MySQLdb.connect(host=hN, port=3306, user=un, password=pwd, db=db_name)
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE\
-            name LIKE BINARY '{:s}'\
-            ORDER BY id ASC".format(argv[4]))
+    bad_query = "SELECT * FROM states WHERE name=('{}')\
+                 ORDER BY id ASC".format(search_value)
+    cursor.execute(bad_query)
     rows = cursor.fetchall()
     for row in rows:
-        print(row)
+        if (row[1] == search_value):
+            print(row)
+    cursor.close()
+    db.close()
 
-    cursor.close
-    db.close
+if __name__ == "__main__":
+    credentials = sys.argv
+    username = sys.argv[1]
+    passwd = sys.argv[2]
+    db_name = sys.argv[3]
+    search_value = sys.argv[4]
+    get_states(username, passwd, db_name, search_value)
