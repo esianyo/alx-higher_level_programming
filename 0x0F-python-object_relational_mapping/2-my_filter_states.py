@@ -12,12 +12,10 @@ if __name__ == "__main__":
     pwd = sys.argv[2]
     db_name = sys.argv[3]
     hN = 'localhost'
-    
-    db = MySQLdb.cursor.execute("SELECT * FROM states WHERE\
-                 name LIKE BINARY '{:s}' ORDER BY id ASC".format(argv[4]))
+
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM `states` WHERE \
-                   name LIKE BINARY 'N%' ORDER BY states.id")
+    db = MySQLdb.cursor.execute("SELECT * FROM states WHERE\
+                                name LIKE BINARY '{:s}' ORDER BY id ASC".format(argv[4]))
     rows = cursor.fetchall()
     for row in rows:
         print(row)
