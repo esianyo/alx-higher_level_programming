@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import sys
+from sys import argv
 import MySQLdb
 
 
@@ -23,6 +24,7 @@ def get_states(username, password, db_name, search_value):
             print(row)
     cursor.close()
     db.close()
+
 
 if __name__ == "__main__":
     credentials = sys.argv
