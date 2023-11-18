@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""a script to list all states from a database"""
+"""a script to list in a filtered manner"""
 
 
 import sys
@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     db = MySQLdb.connect(host=hN, port=3306, user=un, password=pwd, db=db_name)
     cursor = db.cursor()
-    cursor.execute("SELECT FROM `states` WHERE \
+    cursor.execute("SELECT * FROM `states` WHERE \
                    name LIKE BINARY 'N%' ORDER BY states.id")
     rows = cursor.fetchall()
     for row in rows:
