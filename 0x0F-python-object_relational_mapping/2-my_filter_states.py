@@ -3,6 +3,7 @@
 
 
 import sys
+from sys import argv
 import MySQLdb
 
 
