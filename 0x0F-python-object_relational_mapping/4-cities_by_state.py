@@ -1,17 +1,24 @@
 #!/usr/bin/python3
-"""listing all states"""
-import MySQLdb
-import sys
+"""scripts that lists all states"""
 
+from sys import argv
+import sys
+import MySQLdb
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
+
+    u_name = sys.argv[1]
+    p = sys.argv[2]
+    db_name = sys.argv[3]
+    h = 'localhost'
+
+    db = MySQLdb.connect(host=h, port=3306, user=u_name, passwd=p, db=db_name)
     cursor = db.cursor()
-    cursor.execute("""SELECT cities.id, cities.name, states.name FROM
-                cities INNER JOIN states ON states.id=cities.state_id""")
+    cursor.execute("SELECT cities.id, cities.name, states.name \
+          FROM cities JOIN states WHERE cities.state_id=states.id")
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-    cursor.close()
-    db.close()
+
+    cursor.close
+    db.close
