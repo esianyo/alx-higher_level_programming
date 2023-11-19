@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""checking for 'a'"""
+"""fetching by state"""
 
 import sys
 from model_state import Base, State
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-
+from model_city import City
 
 if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
@@ -13,5 +13,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for state in session.query(State).filter(State.name.contains('a')):
-        print("{:d}: {:s}".format(state.id, state.name))
+    for query in session.query(State, City).filter(
+            State.id == City.state_id):
+        print("{:s}: ({:d}) {:s}".format(
+            query.State.name, query.City.id, query.City.name))
