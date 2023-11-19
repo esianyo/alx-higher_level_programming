@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""SQL Injection"""
 
 
 import MySQLdb
@@ -14,14 +15,11 @@ if __name__ == "__main__":
                          passwd=mysql_password, db=database_name)
     cursor = db.cursor()
 
-    # Use MySQLdb's parameterized query to avoid MySQL injections
     query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
     cursor.execute(query, (state_name,))
 
-    # Fetch all the rows returned by the query
     rows = cursor.fetchall()
 
-    # Display the results
     for row in rows:
         print(row)
 
