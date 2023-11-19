@@ -10,7 +10,8 @@ if __name__ == "__main__":
     database_name = sys.argv[3]
     state_name = sys.argv[4]
 
-    db = MySQLdb.connect(host='localhost', port=3306, user=mysql_username, passwd=mysql_password, db=database_name)
+    db = MySQLdb.connect(host='localhost', port=3306, user=mysql_username,
+                         passwd=mysql_password, db=database_name)
     cursor = db.cursor()
 
     # Use MySQLdb's parameterized query to avoid MySQL injections
@@ -19,7 +20,7 @@ if __name__ == "__main__":
 
     # Fetch all the rows returned by the query
     rows = cursor.fetchall()
-    
+
     # Display the results
     for row in rows:
         print(row)
