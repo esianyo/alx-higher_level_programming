@@ -2,6 +2,7 @@
 """Selects all cities by state"""
 
 import sys
+from sys import argv
 import MySQLdb
 
 if __name__ == "__main__":
