@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""checking for 'a'"""
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
