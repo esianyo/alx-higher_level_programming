@@ -29,9 +29,9 @@ if __name__ == "__main__":
         state_id = row[2]
 
         cursor.execute("SELECT cities.id, cities.name, states.name\
-                    FROM `cities`\
-                    JOIN `states` ON state_id=states.id\
-                    ORDER BY cities.id")
+                FROM `cities`\
+                JOIN `states` ON state_id=states.id\
+                ORDER BY cities.id")
         state_name = cursor.fetchone()[0]
 
         print(f"City: {city_name}, State: {state_name}")
