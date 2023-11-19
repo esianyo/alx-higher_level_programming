@@ -24,6 +24,7 @@ def get_states(username, password, db_name):
     cursor.close()
     db.close()
 
+
 if __name__ == "__main__":
     credentials = sys.argv
     username = sys.argv[1]
