@@ -1,3 +1,4 @@
 #!/bin/bash
 # cURLs only methods
-curl -s -I -X OPTIONS "$1" | grep Allow | cut -d " " -f2
+URL=$1
+curl -s -I -X OPTIONS "$URL" | grep Allow | cut -d " " -f2
