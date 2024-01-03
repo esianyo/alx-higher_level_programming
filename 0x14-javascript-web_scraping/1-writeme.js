@@ -8,6 +8,6 @@ fs.writeFile(path, content, 'utf-8', (err) => {
   if (err) {
     console.error(err);
   } else {
-    console.log(`String written to file ${path}`);
+    console.log(`Content written to ${path}`);
   }
 });
