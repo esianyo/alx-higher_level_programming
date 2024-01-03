@@ -1,12 +1,16 @@
 #!/usr/bin/node
 
 const fs = require('fs');
-const path = process.argv[2];
+const filePath = process.argv[2];
 
-fs.readFile(path, 'utf-8', (err, data) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(data);
-  }
-});
+if (!filePath) {
+  console.log('Usage: node script_name.js file_path');
+  process.exit(1);
+}
+
+try {
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  process.stdout.write(fileContent + '\n');
+} catch (error) {
+  console.error(`An error occurred while reading the file: ${error}`);
+}
