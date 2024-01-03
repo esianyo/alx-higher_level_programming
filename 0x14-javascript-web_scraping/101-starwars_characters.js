@@ -12,25 +12,24 @@ request(apiUrl, (error, response, body) => {
     const movie = JSON.parse(body);
     const characters = movie.characters;
 
-    const characterNames = [];
-    const requests = characters.map((characterUrl) => {
-      return new Promise((resolve) => {
+    let count = 0;
+
+    function printCharacter () {
+      if (count < characters.length) {
+        const characterUrl = characters[count];
         request(characterUrl, (charError, charResponse, charBody) => {
           if (charError) {
             console.error(charError);
           } else {
             const character = JSON.parse(charBody);
-            characterNames.push(character.name);
-            resolve();
+            console.log(character.name);
+            count++;
+            printCharacter();
           }
         });
-      });
-    });
+      }
+    }
 
-    Promise.all(requests).then(() => {
-      characterNames.forEach((name) => {
-        console.log(name);
-      });
-    });
+    printCharacter();
   }
 });
